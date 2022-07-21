@@ -34,7 +34,7 @@
 			let pwd = document.querySelector('input[name="user_pass"]').value;
 			let role = document.querySelector('select[name="role"]').value;
 			if(name==""||pwd==""||role=="") {
-			e.preventDefault();	
+				e.preventDefault();	
 				alert('값을 입력하세요');	
 				return; //function 강제 종료
 			}

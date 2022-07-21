@@ -65,9 +65,10 @@ public class EmpDAO extends DAO {
 		return list;
 	}
 	
-	//user_name, user_pass, role 받아서 db에 입력
-	public void insertMember(String name, String pass, String role) {
+	//입력 : user_name, user_pass, role 받아서 db에 입력
+	public int insertMember(String name, String pass, String role) {
 		String sql = "insert into members values(?,?,?)";
+		int r=0;
 		connect();
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -75,17 +76,21 @@ public class EmpDAO extends DAO {
 			pstmt.setString(2, pass);
 			pstmt.setString(3, role);
 			
-			int r = pstmt.executeUpdate();	//insert, update, delete
+			r = pstmt.executeUpdate();	//insert, update, delete
 			System.out.println(r+"건 입력됨");
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			disconnect();
 		}
+		return r;
 	}
 	
-	//업데이트
-	public void updateMember(String name, String pass, String role) {
+	//수정 : 업데이트
+	public int updateMember(String name, String pass, String role) {
+		int r=0;
 		String sql = "update members "
 				+ "	set member_password = ?,"
 				+ "		member_role = ? "
@@ -97,12 +102,13 @@ public class EmpDAO extends DAO {
 			pstmt.setString(2, role);
 			pstmt.setString(3, name);
 			
-			int r = pstmt.executeUpdate();
+			r = pstmt.executeUpdate();
 			System.out.println(r+"건 변경됨");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			disconnect();
 		}
+		return r;
 	}
 }
