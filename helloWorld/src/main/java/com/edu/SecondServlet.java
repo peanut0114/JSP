@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /*
  * 서블릿을 만들려면 HttpServlet을 상속받아야함!
- * @WebServlet("/second.do")로 알려주기
+ * @WebServlet("/second.do")로 매핑
  */
 
 @WebServlet("/second.do")

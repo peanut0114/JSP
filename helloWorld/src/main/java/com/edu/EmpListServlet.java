@@ -16,6 +16,9 @@ import javax.servlet.http.HttpServletResponse;
  * EmpDAO : empList()
  */
 
+import com.edu.common.EmpDAO;
+import com.edu.common.Employee;
+
 @WebServlet("/emplist")
 public class EmpListServlet extends HttpServlet {
 

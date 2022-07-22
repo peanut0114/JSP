@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>html/member.html</title>
+<link href='css/member.css' rel='stylesheet'>
+</head>
+<body>
+<div id="container">
+  <h3>회원정보</h3>
+  
+  <form action="queryTest" method="post">
+  <ul>
+    <li><label>ID </label><input type="text" name="id" value="user9" ></li>
+    <li><label>비밀번호 </label><input type="password" name="pwd" value="user9"></li>
+    <li><label>이름 </label><input type="text" name="name" value="홍길동"></li>
+    <li><label>취미 </label><input type="checkbox" name="hobby" value="exercise" checked >운동
+          <input type="checkbox" name="hobby" value="climbing">독서
+          <input type="checkbox" name="hobby" value="movie">영화
+          <input type="checkbox" name="hobby" value="handicraft">공예
+          <input type="checkbox" name="hobby" value="treveling">여행</li>
+    <li><label>성별 </label><input type="radio" value="male" name="gender">남자
+          <input type="radio" name="gender" value="female" checked >여자</li>
+    <li><label>종교 </label><select name="religion">
+            <option value="christianity">기독교</option>
+            <option value="bullhism">불교</option>
+            <option value="catholicism">천주교</option>
+            <option value="atheism" selected>무교</option>
+          </select></li>
+    <li><label id="instro">자기소개 </label>
+    <textarea name="introduction" cols="30" rows="10"></textarea><br> 
+    <input type="submit" value="전송">
+    <input type="reset" value="초기화"></li>
+   </ul>
+  </form> 
+  	<script>
+  		// console.log(decodeURI('%ED%99%8D%EA%B8%B8%EB%8F%99'));
+  		// console.log(encodeURI('홍길동'));
+  		//queryString
+  		let str = 'id=user9&pwd=user9&name=%ED%99%8D%EA%B8%B8%EB%8F%99&hobby=exercise&hobby=handicraft&hobby=treveling&gender=female&religion=atheism&introduction=%ED%97%88%EC%9D%B4%EC%95%BC';
+  		
+  		//입력된 파라미터'pwd'의 값을 리턴하는 함수를 만들자 
+  		let result = getParameter(str,'hobby');
+
+  		function getParameter(querystring,param){
+  			//split : &기준으로 문자열 나눠서 배열 생성 
+                  //[파라미터 = 값] 형태
+                  let arr_str=querystring.split('&');
+
+                  for(let i=0;i<arr_str.length;i++){
+                        //includes : param 이 포함되어있으면 true 반환
+                        if(arr_str[i].includes(param)){
+                              let arr=arr_str[i].split('=');
+                              console.log(arr[1]);
+                        }
+                  }
+            }
+
+            
+  	</script>
+  </div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+@charset "UTF-8";
+#container{
+	width:460px;
+	margin:0 auto;
+	background: aliceblue;
+	padding: 20px;
+}
+h3{
+	text-align:center;
+}
+ul li{	
+	list-style:none;
+}
+label{
+	display: inline-block;
+	width:80px;
+}

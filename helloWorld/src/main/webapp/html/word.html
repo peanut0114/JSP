@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+  #container{
+    width: 400px;
+    height: 400px;
+    background-color: rgb(214, 204, 247);
+    margin: 0 auto;
+    padding: 20px;
+  }
+  input{
+    margin: 10px;
+  }
+  #show > span{
+    display: inline-block;
+    width: 120px;
+    height: 25px;
+    background-color: aliceblue;
+    border: 1px solid rgb(234, 237, 247);
+    border-radius: 10px;
+    padding: 2px;
+    margin: 2px;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+  <div id="container">
+  <input type="text" name="userInput" id="userInput" autofocus>
+  <div id="show"></div>
+  <script>
+    //lorem : 의미없는 문자열 나열
+    let word = `Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magnam labore minus velit obcaecati reprehenderit! Eligendi voluptatum modi saepe eaque quod, repellendus voluptates voluptatem officiis rerum nostrum, inventore quia assumenda quam!`;
+    //공백을 구분자로 단어 구분
+    let wordList = word.split(' ');
+    let show = document.getElementById('show');
+    for(let word of wordList){
+      let span = document.createElement('span');
+      span.innerText = word;  //<span>lorem</span>
+      show.append(span);      //div id="show" 하위요소로 넣음
+    }
+
+    // userInput : change 이벤트 발생시 같은 글자 제거
+    // document.querySelector('#show>span:nth-child(2)').remove();
+    // document.querySelector('#show>span:nth-child(2)').style.display='none';
+    
+    let input = document.querySelector('#userInput');
+    let sps = document.querySelectorAll('span');
+    input.onchange = removeWord;
+    let count = sps.length;
+    function removeWord(){
+      for(let s of sps){
+        //innerText : 값을 읽어옴 (span에는 value가 없음)
+        if(s.innerText==input.value){
+          s.remove();
+        }
+      }
+    }
+  </script>
+  
+</div>
+  
+</body>
+</html>

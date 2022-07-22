@@ -7,6 +7,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.edu.common.EmpDAO;
 /*
  * 받은 파라메터를 테이블에 추가
  */
@@ -21,7 +23,11 @@ public class AddMemberServ extends HttpServlet {
 		String pass = req.getParameter("user_pass");
 		String role = req.getParameter("role");
 		EmpDAO dao = new EmpDAO();
-		int check=0;
+		
+		//DB에 적용이 되지 않은 경우를 체크
+		boolean isTrue=false;	//교수님방식 : 불린 ->Post (입력)
+		int check=0;			//혜주방식 : int ->Get (수정)
+		
 		resp.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = resp.getWriter();
 		//get요청, post요청 구분해서 처리
@@ -34,17 +40,12 @@ public class AddMemberServ extends HttpServlet {
 			}
 		}else {
 			//post : 입력
-			check= dao.insertMember(name, pass, role);
-			if(check<1) {
-				out.print("<script>alert('이미 등록된 사용자입니다')</script>");
-				out.flush();
-			}
+			isTrue = dao.insertMember(name, pass, role);
 		}
-		if(check>0) {
 		//DB에 입력
 		dao.insertMember(name, pass, role);		
-		resp.getWriter().print("Complete");
-		}
+		if(check>0||isTrue) resp.getWriter().print("Complete");
+		else resp.getWriter().print("Failed");
 	}
 }
 /*get.html 실행 -> 버튼 누르면 addMemeber되도록 맞춤
