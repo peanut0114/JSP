@@ -28,6 +28,7 @@ public class LogInOutServlet extends HttpServlet {
 		if(session.isNew()||session.getAttribute("id")==null) {
 			session.setAttribute("id", id);
 			out.print("로그인을 완료했습니다.");
+			resp.sendRedirect("jsp/boardList.jsp");
 		}else {
 			out.print("현재 로그인 중입니다.");
 		}

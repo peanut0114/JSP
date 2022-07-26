@@ -16,8 +16,7 @@
 	String bno = request.getParameter("id");
 	BoardDAO dao = new BoardDAO();
 	BoardVO vo = dao.getBoard(Integer.parseInt(bno));//"3" => 3
-	System.out.println(bno);
-	System.out.println(vo.getBoardId());
+	System.out.println(bno+"번 게시물 선택");
 	
 	%>
 	<div id="cotainer">
@@ -31,7 +30,19 @@
 			<tr><th>조회수</th><td><%=vo.getCnt() %></td></tr>
 			</tbody>
 		</table>
-		<a href="boardList.jsp">목록으로</a>
+	<%
+		// 작성자가 아니면 수정 버튼 보이지 않게 막는 법
+		//String loginId=(String) session.getAttribute("loginId");
+		//if(loginId !=null && loginId.equals(vo.getWriter())){
+	%>
+		<a href="updateForm.jsp?bno=<%=bno%>">
+			<input type="button" value="글수정"></a>
+		<a href="deleteForm.jsp?bno=<%=vo.getBoardId()%>">
+			<input type="button" value="삭제"></a>
+	<%	
+		//}
+	%>
+		<a href="boardList.jsp"><input type="button" value="목록으로"></a>
 	</div>
 	
 
