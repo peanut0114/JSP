@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+#container{
+  width : 200px;
+  margin: 0 auto;
+  background-color: mistyrose;
+  padding: 20px;
+ 
+}
+form{width: 100px;}
+input[type='submit']{
+  margin: 10px ;
+  border: pink;
+  background-color: palevioletred;
+  color: white;
+  padding: 8px;
+  border-radius: 3px;
+}
+input[type='submit']:hover{
+  background-color: indigo;
+}
+input{
+  margin: 5px;}
+a{
+  background-color: rgb(158, 140, 179);
+  border: pink;
+  border-radius: 3px;
+  padding: 8px;
+  color: rgb(255, 255, 255);
+  text-decoration:none;
+}
+a:hover{
+  background-color: rgb(67, 33, 105);
+}
+</style>
+</head>
+<body>
+  <div id="container">
+    <form action="sendRedirect" method="get">
+      <input type="radio" name="site" value="naver">네이버<br>
+      <input type="radio" name="site" value="daum">다음<br>
+      <input type="radio" name="site" value="google">구글<br>
+      <input type="submit" value="이동">
+    </form>
+    <a href="dispatch1">요청재지정페이지</a>
+  </div>
+</body>
+</html>
