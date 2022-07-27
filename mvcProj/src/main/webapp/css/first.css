@@ -1,0 +1,51 @@
+@charset "UTF-8";
+@charset "UTF-8";
+#container{
+  border-radius: 5px;
+  width: 300px;
+  margin: 0 auto;
+  background-color: aliceblue;
+  padding: 20px;
+}
+label{
+  display: inline-block;
+  width: 80px;
+  margin: 3px;
+}
+input{
+  padding: 5px;
+  margin: 3px;
+  border: 1px solid rgb(207, 233, 255);
+}
+textarea{
+  padding: 5px;
+  margin: 3px;
+  border: 1px solid rgb(207, 233, 255);
+}
+input[type="button"]{
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  color: white;
+}
+input[type="submit"],a{
+  margin: 20px 8px 0 0;
+  border: pink;
+  background-color: rgb(112, 122, 216);
+  color: white;
+  padding: 8px;
+  border-radius: 3px;
+}
+a{
+  padding: 7px;
+}
+input[type="submit"]:hover{
+  background-color: indigo;
+}
+a:hover{
+  background-color: rgb(130, 0, 91);
+}
+span{
+	color:red;
+}
