@@ -30,6 +30,9 @@ public class FrontController extends HttpServlet {
 		mappings.put("/memberInsert.do", new MemberInsertController());
 		mappings.put("/memberList.do", new MemberListController());
 		mappings.put("/memberSearch.do", new MemberSearchController());
+		mappings.put("/memberUpdate.do", new MemberUpdateController());
+		mappings.put("/memberDelete.do", new MemberDeleteController());
+		mappings.put("/memberJson.do", new MemberJsonController());
 	}
 	
 	//실행때마다 호출되는 service

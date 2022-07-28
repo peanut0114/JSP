@@ -30,7 +30,7 @@ public class MemberDAO {
 			e.printStackTrace();
 		}
 	}
-	
+	//connect()
 	public void disconnect() {
 		try {
 			if(rs != null) 
@@ -113,5 +113,42 @@ public class MemberDAO {
 			disconnect();
 		}
 		return null;
+	}
+	
+	//수정
+	public void updateMember(MemberVO vo) {
+		String sql = "UPDATE member "
+				+ "SET name=?, password=? ,mail=? "
+				+ "WHERE id=?";
+		connect();
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getName());
+			pstmt.setString(2, vo.getPasswd());
+			pstmt.setString(3, vo.getMail());
+			pstmt.setString(4, vo.getId());
+			int r = pstmt.executeUpdate();
+			System.out.println(r+"건 변경");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			disconnect();
+		}
+	}
+	
+	//삭제
+	public void deleteMember(String id) {
+		String sql="DELETE from member WHERE id=?";
+		connect();
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			int r = pstmt.executeUpdate();
+			System.out.println(r+"건 삭제");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			disconnect();
+		}
 	}
 }
