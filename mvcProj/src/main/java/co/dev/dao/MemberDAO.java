@@ -137,18 +137,23 @@ public class MemberDAO {
 	}
 	
 	//삭제
-	public void deleteMember(String id) {
+	public boolean deleteMember(String id) {
 		String sql="DELETE from member WHERE id=?";
+		int r=0;
 		connect();
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
-			int r = pstmt.executeUpdate();
+			r = pstmt.executeUpdate();
 			System.out.println(r+"건 삭제");
+			if(r>0) {
+				return true;
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			disconnect();
 		}
+		return false;
 	}
 }
